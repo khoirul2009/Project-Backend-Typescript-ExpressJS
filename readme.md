@@ -14,7 +14,7 @@
 ### Respon jika berhasil membuat user
 ```json
 {
-    "status": 200,
+    "code": 200,
     "message": "User created"
 }
 ```

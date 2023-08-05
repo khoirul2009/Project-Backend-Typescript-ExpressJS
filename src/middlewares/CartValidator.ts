@@ -1,0 +1,18 @@
+import { Request, Response, NextFunction } from "express";
+import { check, validationResult, body } from "express-validator";
+const db = require('../db/models');
+
+
+const create = [
+    check('qty')
+        .notEmpty().withMessage('The quantity field cannot be empty'),
+    async (req: Request, res: Response, next: NextFunction) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(422).send({ code: 422, errors: errors.array() })
+        }
+        return next();
+    }
+]
+
+export { create }
